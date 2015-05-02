@@ -40,8 +40,9 @@ Just include the script `table-ext.lua`. The file should *not* be included twice
 
 ## API Reference
 
-* `table.slice(tbl, first, last, step)`
-  Return a copy of the given `tbl` with all the elements from `first` to `last` (inclusively), with an optional stepping gap, will be removed. For example
+* `table.slice(tbl, first, last, step)`  
+  Return a copy of the given `tbl` with all the elements from `first` to `last` (inclusively), with an optional stepping gap, will be removed. For example  
+
   ```
   tbl = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
   print(table.slice(tbl));         --> {}
@@ -49,14 +50,17 @@ Just include the script `table-ext.lua`. The file should *not* be included twice
   print(table.slice(tbl, 4, 8))    --> { 1, 2, 3, 9, 10 }
   print(table.slice(tbl, 4, 8, 2)) --> { 1, 2, 3, 5, 7, 9, 10 }
   ```
-* `table.keys(tbl)`
-  Return all the keys in the given `tbl`. For example
+  
+* `table.keys(tbl)`  
+  Return all the keys in the given `tbl`. For example  
+  
   ```
-  tblArr = { 2, 3, 5, 7, 11, 13, 17, 19 };
-  tblObj = { foo = "Hello", bar = "World" };
-  print(table.keys(tblArr));    --> { 1, 2, 3, 4, 5, 6, 7, 8 }
-  print(table.keys(tblObj));    --> { "foo", "bar" }
+  tblArr = { 2, 3, 5, 7, 11, 13, 17, 19 };  
+  tblObj = { foo = "Hello", bar = "World" };  
+  print(table.keys(tblArr));    --> { 1, 2, 3, 4, 5, 6, 7, 8 }  
+  print(table.keys(tblObj));    --> { "foo", "bar" }  
   ```
+  
 * `table.contains(tbl, value)`
   Returns `true` if the specified table `tbl` has an element equal to `value`, `false` otherwise.
 * `table.remove(tbl, value)`
