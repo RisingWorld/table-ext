@@ -63,7 +63,7 @@ Just include the script `table-ext.lua`. The file should *not* be included twice
   
 * `table.contains(tbl, value)`
   Returns `true` if the specified table `tbl` has an element equal to `value`, `false` otherwise.
-* `table.remove(tbl, value)`
+* `table.removeAll(tbl, value)`
   Removes *all* elements equal to `value` in the specified table `tbl`, then returns the number of time `value` was found and removed.
 
 ## License

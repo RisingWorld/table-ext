@@ -55,13 +55,12 @@ function table.contains(tbl, value)
 end
 
 
---- Used to remove a value from the provided table. If the value is present
---- multiple times, all will be removed.
+--- Used to remove all elements from the provided table matching a given value.
 -- @param tbl The table
 -- @param value The value you want to remove
 -- @return the number of times value was removed from the array
-function table.remove(tbl, value)
-  local n = #input;
+function table.removeAll(tbl, value)
+  local n = #tbl;
   local j = 0;
   local removed = 0;
 
