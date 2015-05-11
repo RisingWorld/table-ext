@@ -10,7 +10,7 @@
 -- @param first (optional) the starting index (default 1)
 -- @param last (optional) the last index (default #tbl)
 -- @param step (optinal) skip elements between first...last (default 1)
--- @return table
+-- @return The table slice
 function table.slice(tbl, first, last, step)
   local sliced = {}
 
@@ -25,12 +25,12 @@ end
 --- Return all the keys in the given table. The table is assume not to be
 --- an array.
 -- @param tbl the table
--- @return table an array of all the keys in the given table
+-- @return Table an array of all the keys in the given table
 function table.keys(tbl)
   local keys = {};
 
-  for key,val in pairs(tbl) do
-    table.insert(keys, key);
+  for k,v in pairs(tbl) do
+    table.insert(keys, k);
   end
 
   return keys;
@@ -44,8 +44,8 @@ end
 function table.contains(tbl, value)
   local found = false;
 
-  for key,val in pairs(tbl) do
-    if val == value then
+  for k,v in pairs(tbl) do
+    if v == value then
       found = true;
       break;
     end
@@ -58,16 +58,16 @@ end
 --- Used to remove all elements from the provided table matching a given value.
 -- @param tbl The table
 -- @param value The value you want to remove
--- @return the number of times value was removed from the array
+-- @return The number of times value was removed from the array
 function table.removeAll(tbl, value)
   local n = #tbl;
   local j = 0;
   local removed = 0;
 
   -- 1. Remove all values from array and/or table
-  for key, val in pairs(tbl) do
-    if val == value then
-      tbl[key] = nil;
+  for k,v in pairs(tbl) do
+    if v == value then
+      tbl[k] = nil;
       removed = removed + 1;
     end
   end
@@ -86,4 +86,26 @@ function table.removeAll(tbl, value)
   end
 
   return removed;
+end
+
+
+--- Pluck a value from each table elements and return them as an array.
+--- If an element is not a table, or does not possess the specified key,
+--- then it will be skipped. Otherwise, default will be used.
+-- @param tbl The table
+-- @param key The key's value to pluck from each element
+-- @param default (optional) If plucked value is nil, or missing, the value to be used instead
+-- @return The resulting table
+function table.pluck(tbl, key, default)
+  local res = {};
+
+  for k,v in pairs(tbl) do
+    if type(v) == "table" and v[key] then
+      table.insert(res, v[key]);
+    elseif default ~= nil then
+      table.insert(res, default);
+    end
+  end
+
+  return res;
 end

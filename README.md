@@ -45,10 +45,10 @@ Just include the script `table-ext.lua`. The file should *not* be included twice
 
   ```
   tbl = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
-  print(table.slice(tbl));         --> {}
-  print(table.slice(tbl, 4));      --> { 1, 2, 3 }
-  print(table.slice(tbl, 4, 8))    --> { 1, 2, 3, 9, 10 }
-  print(table.slice(tbl, 4, 8, 2)) --> { 1, 2, 3, 5, 7, 9, 10 }
+  table.slice(tbl);         --> {}
+  table.slice(tbl, 4);      --> { 1, 2, 3 }
+  table.slice(tbl, 4, 8);    --> { 1, 2, 3, 9, 10 }
+  table.slice(tbl, 4, 8, 2); --> { 1, 2, 3, 5, 7, 9, 10 }
   ```
   
 * `table.keys(tbl)`  
@@ -57,14 +57,27 @@ Just include the script `table-ext.lua`. The file should *not* be included twice
   ```
   tblArr = { 2, 3, 5, 7, 11, 13, 17, 19 };  
   tblObj = { foo = "Hello", bar = "World" };  
-  print(table.keys(tblArr));    --> { 1, 2, 3, 4, 5, 6, 7, 8 }  
-  print(table.keys(tblObj));    --> { "foo", "bar" }  
+  table.keys(tblArr);    --> { 1, 2, 3, 4, 5, 6, 7, 8 }  
+  table.keys(tblObj);    --> { "foo", "bar" }  
   ```
   
 * `table.contains(tbl, value)`
   Returns `true` if the specified table `tbl` has an element equal to `value`, `false` otherwise.
 * `table.removeAll(tbl, value)`
   Removes *all* elements equal to `value` in the specified table `tbl`, then returns the number of time `value` was found and removed.
+* `table.pluck(tbl, key[, default])`
+  Returns an array containing all values plucked out of the given table matching the corresponding `key`.
+  
+  ```
+  tbl = {
+    { foo = "Hello", bar = "World" },
+    { foo = "Lorem" },
+    { bar = "whatever" },
+    { foo = "Ipsum"}
+  };
+  table.pluck(tbl, "foo");        --> { "HellO", "Lorem", "Ipsum" }  
+  table.pluck(tbl, "foo", false); --> { "HellO", "Lorem", false, "Ipsum" }  
+  ```
 
 ## License
 
