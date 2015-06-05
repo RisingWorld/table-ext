@@ -55,6 +55,39 @@ function table.contains(tbl, value)
 end
 
 
+--- Used to insert all elements into the provided table. This function is like
+--- table.insert(tbl, index, value) except that values is expected to be an array.
+--- However, values may not need to be an array and the function will act just like
+--- table.insert.
+-- @param tbl The table
+-- @param index The index from which insertion will start
+-- @param values The value or values to insert.
+function table.insertAll(tbl, index, values)
+  if type(index) == "table" or values == nil then
+    values = index;
+    index = #tbl + 1;
+  elseif type(index) ~= "number" then
+    index = nil;
+  end
+
+  index = math.max(index, 1);
+
+  if type(values) ~= "table" then
+    if index then
+      table.insert(tbl, index, values);
+    else
+      table.insert(tbl, values);
+    end
+  else
+    for i = 1, #values do;
+      table.insert(tbl, index + i - 1, values[i]);
+    end;
+  end
+
+  return tbl;
+end
+
+
 --- Used to remove all elements from the provided table matching a given value.
 -- @param tbl The table
 -- @param value The value you want to remove

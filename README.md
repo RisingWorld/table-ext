@@ -79,6 +79,9 @@ Just include the script `table-ext.lua`. The file should *not* be included twice
   table.pluck(tbl, "foo", false); --> { "HellO", "Lorem", false, "Ipsum" }  
   ```
 
+* `table.insertAll(tbl, [index, ] values)`
+  Exactly like `table.insert`, but `values` may be a table. Note that this function only works for numeric keys (i.e. arrays) and will not insert values associated with any other keys (i.e. objects)
+
 ## License
 
 Copyright (c) 2015 Yanick Rochon
