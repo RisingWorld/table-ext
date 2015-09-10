@@ -1,3 +1,9 @@
+# DEPRECATION NOTICE
+
+This module is deprecated. Use [lua-ext](https://github.com/RisingWorld/lua-ext) instead.
+
+---
+
 # Table-Ext SubModule
 
 This module adds some utility functions to the `table` namespace
